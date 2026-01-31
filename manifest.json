@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Lead Tracker",
+  "version": "1.0",
+  "description": "Save and manage useful links",
+  "permissions": ["tabs", "storage"],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Lead Tracker"
+  }
+}
