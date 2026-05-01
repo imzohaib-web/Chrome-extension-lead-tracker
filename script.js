@@ -1,4 +1,5 @@
 let myLeads = [];
+const storageKey = "myLeads";
 
 // Elements
 const inputEl = document.getElementById("input-el");
@@ -8,49 +9,92 @@ const deleteBtn = document.getElementById("delete-btn");
 const ulEl = document.getElementById("ul-el");
 
 // Load from localStorage
-const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem(storageKey));
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage;
-    render(myLeads);
 }
+
+render(myLeads);
 
 // Render function
 function render(leads) {
-    let listItems = "";
+    ulEl.textContent = "";
 
-    for (let i = 0; i < leads.length; i++) {
-        listItems += `
-            <li>
-                <a target="_blank" href="${leads[i]}">${leads[i]}</a>
-            </li>
-        `;
+    if (leads.length === 0) {
+        let emptyItem = document.createElement("li");
+        emptyItem.className = "empty-state";
+        emptyItem.textContent = "No saved leads yet. Add a URL or save the current tab.";
+        ulEl.append(emptyItem);
+        return;
     }
 
-    ulEl.innerHTML = listItems;
+    for (let i = 0; i < leads.length; i++) {
+        let listItem = document.createElement("li");
+        let link = document.createElement("a");
+
+        link.textContent = leads[i];
+        link.href = leads[i];
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        listItem.append(link);
+        ulEl.append(listItem);
+    }
+}
+
+function saveLeads() {
+    localStorage.setItem(storageKey, JSON.stringify(myLeads));
+}
+
+function getCleanUrl(url) {
+    let trimmedUrl = url.trim();
+
+    if (trimmedUrl === "") {
+        return "";
+    }
+
+    if (!trimmedUrl.startsWith("http://") && !trimmedUrl.startsWith("https://")) {
+        trimmedUrl = "https://" + trimmedUrl;
+    }
+
+    return trimmedUrl;
 }
 
 // Save input URL
 saveInputBtn.addEventListener("click", function () {
-    if (inputEl.value.trim() !== "") {
-        myLeads.push(inputEl.value);
+    let cleanUrl = getCleanUrl(inputEl.value);
+
+    if (cleanUrl !== "") {
+        myLeads.push(cleanUrl);
         inputEl.value = "";
-        localStorage.setItem("myLeads", JSON.stringify(myLeads));
+        saveLeads();
         render(myLeads);
+    }
+});
+
+inputEl.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        saveInputBtn.click();
     }
 });
 
 // Save current tab URL
 saveTabBtn.addEventListener("click", function () {
+    if (typeof chrome === "undefined" || !chrome.tabs) {
+        alert("Save Tab works only when the project is loaded as a Chrome extension.");
+        return;
+    }
+
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         myLeads.push(tabs[0].url);
-        localStorage.setItem("myLeads", JSON.stringify(myLeads));
+        saveLeads();
         render(myLeads);
     });
 });
 
 // Delete all leads (double click)
 deleteBtn.addEventListener("dblclick", function () {
-    localStorage.clear();
+    localStorage.removeItem(storageKey);
     myLeads = [];
     render(myLeads);
 });

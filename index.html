@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lead Tracker</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        <input type="text" id="input-el" placeholder="Enter a URL">
-        <button id="save-input">Save Input</button>
-        <button id="save-tab">Save Tab</button>
-        <button id="delete-btn">Delete All</button>
+        <div class="header">
+            <div>
+                <p class="eyebrow">Chrome extension</p>
+                <h1>Lead Tracker</h1>
+            </div>
+            <span class="badge">Links</span>
+        </div>
+
+        <div class="input-card">
+            <label for="input-el">Save a useful URL</label>
+            <input type="url" id="input-el" placeholder="https://example.com">
+
+            <div class="button-row">
+                <button id="save-input">Save Input</button>
+                <button id="save-tab">Save Tab</button>
+            </div>
+        </div>
+
+        <div class="list-header">
+            <h2>Saved leads</h2>
+            <button id="delete-btn">Delete All</button>
+        </div>
+
         <ul id="ul-el"></ul>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,53 +1,210 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    padding: 0;
+    padding: 14px;
+    min-width: 380px;
+    min-height: 520px;
     font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f4f4f4;
+    color: #20302a;
+    background:
+        radial-gradient(circle at top left, rgba(180, 236, 211, 0.7), transparent 38%),
+        linear-gradient(145deg, #f7fff9, #edf7f2);
 }
 
 .container {
-    width: 350px;
+    width: 100%;
+    min-height: 492px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid #d9efe4;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(28, 87, 62, 0.15);
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.eyebrow {
+    margin: 0 0 4px;
+    color: #4f8f72;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    color: #184532;
+    font-size: 28px;
+    line-height: 1.1;
+}
+
+.badge {
+    padding: 7px 11px;
+    color: #1f6f50;
+    background: #e8f8ef;
+    border: 1px solid #c7ecd9;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.input-card {
+    padding: 14px;
+    background: #f8fffb;
+    border: 1px solid #d9efe4;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(28, 87, 62, 0.08);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #37664f;
+    font-size: 13px;
+    font-weight: 800;
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 6px;
-    border: 1px solid #333;
+    padding: 12px 13px;
+    margin-bottom: 10px;
+    color: #20302a;
+    background: white;
+    border: 1px solid #b9ddcb;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    border-color: #2f9468;
+    box-shadow: 0 0 0 4px rgba(47, 148, 104, 0.13);
+}
+
+.button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
 }
 
 button {
-    padding: 10px;
-    margin-bottom: 6px;
-    background-color: green;
+    padding: 11px 12px;
+    background-color: #1f8f5f;
     color: white;
     font-weight: bold;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#save-tab {
+    background-color: #2b6f9f;
+}
+
+#delete-btn {
+    padding: 8px 10px;
+    color: #b42318;
+    background-color: #fff1f0;
+    border: 1px solid #ffd2cf;
+    font-size: 12px;
 }
 
 button:hover {
-    opacity: 0.85;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(28, 87, 62, 0.16);
+}
+
+#save-input:hover {
+    background-color: #18764e;
+}
+
+#save-tab:hover {
+    background-color: #225b82;
+}
+
+#delete-btn:hover {
+    background-color: #ffe2df;
+    box-shadow: none;
+}
+
+.list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 18px;
+}
+
+h2 {
+    margin: 0;
+    color: #254d3a;
+    font-size: 16px;
 }
 
 ul {
     list-style: none;
     padding: 0;
-    margin-top: 10px;
+    margin: 12px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 li {
-    margin-top: 5px;
+    padding: 11px 12px;
+    background: #ffffff;
+    border: 1px solid #dceee5;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(28, 87, 62, 0.06);
+    animation: slide-up 0.25s ease;
 }
 
 a {
-    color: green;
+    display: block;
+    color: #176b4a;
     text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+a:hover {
+    color: #0f4d35;
+    text-decoration: underline;
+}
+
+.empty-state {
+    padding: 22px 14px;
+    color: #6d8378;
+    background: #f8fffb;
+    border: 1px dashed #badfce;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
