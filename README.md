@@ -5,6 +5,7 @@ A lightweight Chrome Extension to save and manage useful links directly from you
 Built with **HTML, CSS, JavaScript, and Chrome Extension APIs**.
 
 ---
+<img width="501" height="705" alt="image" src="https://github.com/user-attachments/assets/bfcbe374-e8a9-4721-b954-6544f88268fe" />
 
 ##  Features
 
