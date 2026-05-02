@@ -1,4 +1,4 @@
-#  Lead Tracker – Chrome Extension
+# Lead Tracker - Chrome Extension
 
 A lightweight Chrome Extension to save and manage useful links directly from your browser.
 
@@ -7,19 +7,21 @@ Built with **HTML, CSS, JavaScript, and Chrome Extension APIs**.
 ---
 <img width="501" height="705" alt="image" src="https://github.com/user-attachments/assets/bfcbe374-e8a9-4721-b954-6544f88268fe" />
 
-##  Features
+## Features
 
-- Save links manually  
-- Save the current browser tab  
-- View saved links as clickable items  
-- Data stored using Local Storage  
-- Double-click to delete all leads  
+- Save links manually
+- Save the current browser tab
+- View saved links as polished cards
+- Copy saved leads to the clipboard
+- Open saved leads in a new tab
+- Data stored using Local Storage
+- Double-click to delete all leads
 
 ---
 
-##  Tech Used
+## Tech Used
 
-- HTML5  
-- CSS3  
-- JavaScript  
+- HTML5
+- CSS3
+- JavaScript
 - Chrome Extension (Manifest V3)
